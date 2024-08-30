@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  body {
+    @apply text-[1.5rem] bg-background text-paragraph;
+  }
+
+  /* .blue-radial-gradient {
+
+  } */
+   .h1 {
+    @apply text-[4rem] text-heading font-medium;
+   }
+   .last-word {
+    @apply text-paragraph;
+   }
+
+   .active {
+    @apply text-active;
+   }
+}
