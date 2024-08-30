@@ -40,7 +40,7 @@ export default function Tutorial(props: Props) {
 						className="flex items-center justify-center"
 						src={props.image}
 						alt={props.title}
-						width={450}
+						width={400}
 						height={1079}
 					/>
 				</div>
