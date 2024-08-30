@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import { ReactNode } from "react";
 import { cn } from "@/libs/utils";
+import { motion, useScroll } from "framer-motion";
 import Bounded from "@/libs/Bounded";
 
 interface Props {
@@ -15,7 +18,7 @@ export default function Tutorial(props: Props) {
 
 	return (
 		<div className={cn("min-h-screen flex justify-center", "relative")}>
-			<div className="absolute top-[-69px] left-[-400px] w-[1103px] h-[1017px] bg-[radial-gradient(35.19%_35.19%_at_50%_50%,rgba(59,149,255,0.17)_0%,rgba(28,106,197,0)_100%)] overflow-clip"></div>
+			<div className="absolute top-[-190px] left-[-400px] w-[1103px] h-[1017px] bg-[radial-gradient(35.19%_35.19%_at_50%_50%,rgba(59,149,255,0.17)_0%,rgba(28,106,197,0)_100%)] overflow-clip"></div>
 			<div className="absolute w-[513px] bg-[rgba(0,0,0,0.2)] h-full z-[-1] right-0 hidden md:flex"></div>
 			<div className="flex items-center justify-center w-full">
 				<div
@@ -37,7 +40,7 @@ export default function Tutorial(props: Props) {
 					</div>
 
 					<Image
-						className="flex items-center justify-center"
+						className="flex items-center justify-center ml-0 md:ml-32"
 						src={props.image}
 						alt={props.title}
 						width={400}

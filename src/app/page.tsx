@@ -1,6 +1,7 @@
 import Tutorial from "@/Components/Tutorials/Tutorial";
 import Bullet from "@/Assets/bulletpoint.png";
 import Image from "next/image";
+import Slider from "@/Components/Slider";
 
 const steps = [
 	{
@@ -30,11 +31,16 @@ const steps = [
 			<div>
 				<p className="text-active flex items-center justify-start gap-5">
 					<span>
-            <Image src={Bullet} alt="bullet" width={16} height={16}/>
-          </span>
-          <span className="font-medium">
-            Tenant selects Pay with Circle enabling:
-          </span>
+						<Image
+							src={Bullet}
+							alt="bullet"
+							width={16}
+							height={16}
+						/>
+					</span>
+					<span className="font-medium">
+						Tenant selects Pay with Circle enabling:
+					</span>
 				</p>
 				<ul className="list-disc list-inside leading-7 ml-7">
 					<li>Zero security deposit move-in</li>
@@ -76,16 +82,19 @@ const steps = [
 export default function Home() {
 	return (
 		<main className="">
-      <div className="">
-        {steps.map((step) => (
-          <Tutorial
-            key={step.id}
-            title={step.title}
-            description={step.description}
-            image={step.image}
-          />
-        ))}
-      </div>
+			<div className="fixed">
+				<Slider />
+			</div>
+			<div className="">
+				{steps.map((step) => (
+					<Tutorial
+						key={step.id}
+						title={step.title}
+						description={step.description}
+						image={step.image}
+					/>
+				))}
+			</div>
 		</main>
 	);
 }
