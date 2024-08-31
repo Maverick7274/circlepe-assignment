@@ -5,9 +5,9 @@ import Bullet from "@/Assets/bulletpoint.png";
 import Image from "next/image";
 import Slider from "@/Components/Slider";
 import HorizontalSlider from "@/Components/HorizontalSlider";
-import { useEffect } from "react";
-import { motion } from "framer-motion";
-
+import { cn } from "@/libs/utils";
+import { use, useEffect, useRef } from "react";
+import { useScroll, motion, useTransform } from "framer-motion";
 
 const steps = [
 	{
@@ -29,7 +29,7 @@ const steps = [
 							alt="bullet"
 							width={16}
 							height={16}
-              className="hidden md:flex"
+							className="hidden md:flex"
 						/>
 					</span>
 					<span className="font-medium">
@@ -43,7 +43,7 @@ const steps = [
 							alt="bullet"
 							width={16}
 							height={16}
-              className="hidden md:flex"
+							className="hidden md:flex"
 						/>
 					</span>
 					<span className="font-medium">
@@ -69,7 +69,7 @@ const steps = [
 							alt="bullet"
 							width={16}
 							height={16}
-              className="hidden md:flex"
+							className="hidden md:flex"
 						/>
 					</span>
 					<span className="font-medium">
@@ -83,7 +83,7 @@ const steps = [
 							alt="bullet"
 							width={16}
 							height={16}
-              className="hidden md:flex"
+							className="hidden md:flex"
 						/>
 					</span>
 					<span className="font-medium">
@@ -109,7 +109,7 @@ const steps = [
 							alt="bullet"
 							width={16}
 							height={16}
-              className="hidden md:flex"
+							className="hidden md:flex"
 						/>
 					</span>
 					<span className="font-medium">
@@ -133,7 +133,13 @@ const steps = [
 		description: (
 			<p className="text-active flex items-center justify-start gap-5">
 				<span>
-					<Image src={Bullet} alt="bullet" width={16} height={16} className="hidden md:flex" />
+					<Image
+						src={Bullet}
+						alt="bullet"
+						width={16}
+						height={16}
+						className="hidden md:flex"
+					/>
 				</span>
 				<span className="font-medium">
 					Smooth Onboarding for the Tenant begins
@@ -156,7 +162,7 @@ const steps = [
 							alt="bullet"
 							width={16}
 							height={16}
-              className="hidden md:flex"
+							className="hidden md:flex"
 						/>
 					</span>
 					<span className="font-medium">
@@ -176,9 +182,51 @@ const steps = [
 ];
 
 export default function Home() {
-	
+	const container = useRef<HTMLDivElement>(null);
+
+	const { scrollYProgress } = useScroll({
+		target: container,
+		offset: ["end end", "start start"],
+	});
+
+	const translateY = useTransform(scrollYProgress, [0, 1], [500, -100]);
+
+	const gradient = {
+		hidden: {
+			scale: 0,
+			opacity: 0,
+		},
+		visible: {
+			scale: 1,
+			opacity: 1,
+			transition: {
+				duration: 1,
+				delay: 1.5,
+				type: "spring",
+			},
+		},
+	};
+
 	return (
-		<main className="">
+		<main ref={container} className="">
+			<motion.div className="sticky top-0 right-0">
+				<motion.div
+					initial="hidden"
+					animate="visible"
+					variants={gradient}
+					style={{ y: translateY }}
+					transition={{
+						repeat: Infinity,
+						repeatType: "mirror",
+						ease: "easeInOut",
+						duration: 0.5,
+					}}
+					className={cn(
+						"top-[-190px] left-[-400px] w-[1103px] h-[1017px]",
+						"hidden md:flex absolute bg-[radial-gradient(35.19%_35.19%_at_50%_50%,rgba(59,149,255,0.17)_0%,rgba(28,106,197,0)_100%)] overflow-clip"
+					)}
+				></motion.div>
+			</motion.div>
 			<div className="hidden md:flex">
 				<Slider />
 			</div>

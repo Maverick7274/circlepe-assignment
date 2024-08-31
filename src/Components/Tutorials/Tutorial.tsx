@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ReactNode, useRef } from "react";
 import { cn } from "@/libs/utils";
 import { motion, easeIn } from "framer-motion";
+import { once } from "events";
 
 interface Props {
 	title: string;
@@ -81,21 +82,15 @@ export default function Tutorial(props: Props) {
 			ref={ref}
 			className={cn(
 				"min-h-screen flex justify-center bg-background",
-				"relative overflow-clip"
+				"overflow-clip"
 			)}
 		>
-			<div
+			{/* <div
 				className={cn(
 					"top-[-190px] left-[-400px] w-[1103px] h-[1017px]",
 					"hidden md:flex absolute bg-[radial-gradient(35.19%_35.19%_at_50%_50%,rgba(59,149,255,0.17)_0%,rgba(28,106,197,0)_100%)] overflow-clip"
 				)}
-			></div>
-			<div
-				className={cn(
-					"top-0 left-0 right=0 w-[275.75px] h-[254.25px] overflow-x-clip",
-					"flex md:hidden absolute bg-[radial-gradient(35.19%_35.19%_at_50%_50%,rgba(59,149,255,0.17)_0%,rgba(28,106,197,0)_100%)]"
-				)}
-			></div>
+			></div> */}
 
 			<div className="absolute w-[513px] bg-[rgba(0,0,0,0.2)] h-full right-0 hidden md:flex z-[1]"></div>
 			<div
@@ -108,6 +103,7 @@ export default function Tutorial(props: Props) {
 						initial="hidden"
 						whileInView="visible"
 						variants={heading}
+						viewport={{ once: true }}
 						className={cn("h1")}
 					>
 						{titleWords.join(" ")}{" "}
@@ -119,6 +115,7 @@ export default function Tutorial(props: Props) {
 						initial="hidden"
 						whileInView="visible"
 						variants={leading}
+						viewport={{ once: true }}
 						className=""
 					>
 						<div className="w-20 h-[0.15rem] bg-primary"></div>
@@ -127,6 +124,7 @@ export default function Tutorial(props: Props) {
 						initial="hidden"
 						whileInView="visible"
 						variants={desc}
+						viewport={{ once: true }}
 						className="font-normal"
 					>
 						{props.description}
@@ -137,6 +135,7 @@ export default function Tutorial(props: Props) {
 					initial="hidden"
 					whileInView="visible"
 					variants={img}
+					viewport={{ once: true }}
 					className="z-10"
 				>
 					<Image
