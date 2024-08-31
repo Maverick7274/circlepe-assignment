@@ -12,15 +12,15 @@ export default function Slider() {
 		restDelta: 0.001,
 	  });
 	return (
-		<div className="h-full flex items-center justify-center">
-			<div className="fixed right-0 top-0 left-0 w-screen h-2 bg-[#424242] rounded transform origin-top-left z-[5]"></div>
+		<div className="h-full flex items-center justify-center overflow-x-clip">
+			<div className="fixed right-0 top-0 left-0 w-screen h-2 bg-[#424242] transform origin-top-left z-20"></div>
 			<div className="flex items-center justify-center">
 				<motion.div
 					style={{
 						scaleX,
 						background,
 					}}
-					className="fixed right-0 top-0 left-0 w-screen h-2 bg-primary rounded transform origin-top-left z-20"
+					className="fixed right-0 top-0 left-0 w-screen h-2 bg-primary transform origin-top-left z-30"
 				></motion.div>
 			</div>
 		</div>

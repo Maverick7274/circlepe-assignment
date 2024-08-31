@@ -7,7 +7,7 @@ import Slider from "@/Components/Slider";
 import HorizontalSlider from "@/Components/HorizontalSlider";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import Lenis from "lenis";
+
 
 const steps = [
 	{
@@ -29,6 +29,7 @@ const steps = [
 							alt="bullet"
 							width={16}
 							height={16}
+              className="hidden md:flex"
 						/>
 					</span>
 					<span className="font-medium">
@@ -42,6 +43,7 @@ const steps = [
 							alt="bullet"
 							width={16}
 							height={16}
+              className="hidden md:flex"
 						/>
 					</span>
 					<span className="font-medium">
@@ -67,6 +69,7 @@ const steps = [
 							alt="bullet"
 							width={16}
 							height={16}
+              className="hidden md:flex"
 						/>
 					</span>
 					<span className="font-medium">
@@ -80,6 +83,7 @@ const steps = [
 							alt="bullet"
 							width={16}
 							height={16}
+              className="hidden md:flex"
 						/>
 					</span>
 					<span className="font-medium">
@@ -105,6 +109,7 @@ const steps = [
 							alt="bullet"
 							width={16}
 							height={16}
+              className="hidden md:flex"
 						/>
 					</span>
 					<span className="font-medium">
@@ -128,7 +133,7 @@ const steps = [
 		description: (
 			<p className="text-active flex items-center justify-start gap-5">
 				<span>
-					<Image src={Bullet} alt="bullet" width={16} height={16} />
+					<Image src={Bullet} alt="bullet" width={16} height={16} className="hidden md:flex" />
 				</span>
 				<span className="font-medium">
 					Smooth Onboarding for the Tenant begins
@@ -151,6 +156,7 @@ const steps = [
 							alt="bullet"
 							width={16}
 							height={16}
+              className="hidden md:flex"
 						/>
 					</span>
 					<span className="font-medium">
@@ -170,25 +176,9 @@ const steps = [
 ];
 
 export default function Home() {
-	// const container = useRef<HTMLDivElement>(null);
-	// const { scrollYProgress } = useScroll({
-	// 	target: container,
-	// 	offset: ["start start", "end end"],
-	// });
-
-	useEffect(() => {
-		const lenis = new Lenis();
-
-		function raf(time: number) {
-			lenis.raf(time);
-			requestAnimationFrame(raf);
-		}
-
-		requestAnimationFrame(raf);
-	}, []);
-
+	
 	return (
-		<main className="h-[200vh]">
+		<main className="">
 			<div className="hidden md:flex">
 				<Slider />
 			</div>
@@ -203,7 +193,6 @@ export default function Home() {
 							title={step.title}
 							description={step.description}
 							image={step.image}
-							// scrollYProgress={scrollYProgress}
 						/>
 					</motion.div>
 				))}
