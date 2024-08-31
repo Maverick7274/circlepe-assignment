@@ -15,8 +15,6 @@ interface Props {
 	arrowVisible?: boolean;
 	arrowTop?: string;
 	arrowLeft?: string;
-	arrowRight?: string;
-	arrowRotate?: string;
 }
 
 export default function Tutorial(props: Props) {
@@ -99,8 +97,8 @@ export default function Tutorial(props: Props) {
 		},
 
 		visible: {
-			scale: props.scaleImage ? props.scaleImageNumber : 0.9,
-			y: props.scaleImage ? 300 : 100,
+			scale: props.scaleImage ? props.scaleImageNumber : 0.8,
+			y: props.scaleImage ? 300 : 0,
 			transition: {
 				delay: 1.1,
 				duration: 0.5,
@@ -119,20 +117,6 @@ export default function Tutorial(props: Props) {
 			)}
 		>
 			<div className="absolute w-[513px] bg-[rgba(0,0,0,0.2)] h-full right-0 hidden md:flex z-[1]"></div>
-			{props.arrowVisible ? (
-				<motion.img
-					initial="hidden"
-					whileInView="visible"
-					variants={imgBox}
-					viewport={{ once: true }}
-					className={cn("absolute z-50 hidden md:flex", props.arrowTop, props.arrowLeft, props.arrowRight, props.arrowRotate
-					)}
-					src={props.arrowImage}
-					alt="Arrow"
-					width={400}
-					height={1079}
-				/>
-			) : null}
 			<div
 				className={cn(
 					"grid md:grid-cols-2 grid-cols-1 content-center items-center justify-between md:gap-32 gap-0 w-full mx-16 md:mx-32"
@@ -178,16 +162,35 @@ export default function Tutorial(props: Props) {
 					viewport={{ once: true }}
 					className="z-10"
 				>
-					<motion.img
-						initial="hidden"
-						animate="visible"
-						variants={img}
-						className="flex items-center justify-center ml-0 z-10"
-						src={props.image}
-						alt={props.title}
-						width={400}
-						height={1079}
-					/>
+					<div className="relative">
+						{props.arrowVisible ? (
+							<motion.img
+								initial="hidden"
+								whileInView="visible"
+								variants={imgBox}
+								viewport={{ once: true }}
+								className={cn(
+									"absolute z-50 hidden md:flex",
+									props.arrowTop,
+									props.arrowLeft,
+								)}
+								src={props.arrowImage}
+								alt="Arrow"
+								width={400}
+								height={1079}
+							/>
+						) : null}
+						<motion.img
+							initial="hidden"
+							animate="visible"
+							variants={img}
+							className="flex items-center justify-center ml-0 z-10"
+							src={props.image}
+							alt={props.title}
+							width={400}
+							height={1079}
+						/>
+					</div>
 				</motion.div>
 			</div>
 		</div>

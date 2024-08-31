@@ -61,9 +61,8 @@ const steps = [
 		arrowVisible: true,
 		arrowImage:
 			"https://res.cloudinary.com/da1x0nwv3/image/upload/v1725062349/arrow_fcgub4.png",
-		arrowTop: "top-[1350px]",
-		arrowLeft: "left-[700px]",
-		arrowRight: "",
+		arrowTop: "top-[200px]",
+		arrowLeft: "left-[-350px]",
 	},
 	{
 		id: 1,
@@ -107,8 +106,8 @@ const steps = [
 		arrowVisible: true,
 		arrowImage:
 			"https://res.cloudinary.com/da1x0nwv3/image/upload/v1725062349/arrow_fcgub4.png",
-		arrowTop: "top-[2490px]",
-		arrowLeft: "left-[820px]",
+		arrowTop: "top-[320px]",
+		arrowLeft: "left-[-250px]",
 		arrowRight: "",
 		arrowRotate: "rotate-[-180deg]",
 	},
@@ -140,8 +139,8 @@ const steps = [
 		),
 		image: "https://res.cloudinary.com/da1x0nwv3/image/upload/v1725034702/step-2_n4wyqj.png",
 		arrowVisible: true,
-		arrowTop: "top-[3590px]",
-		arrowLeft: "left-[820px]",
+		arrowTop: "top-[350px]",
+		arrowLeft: "left-[-250px]",
 		arrowRight: "",
 		arrowImage:
 			"https://res.cloudinary.com/da1x0nwv3/image/upload/v1725062349/arrow_fcgub4.png",
@@ -167,8 +166,8 @@ const steps = [
 		),
 		image: "https://res.cloudinary.com/da1x0nwv3/image/upload/v1725031973/step-3_cgbzyn.png",
 		arrowVisible: true,
-		arrowTop: "top-[5590px]",
-		arrowLeft: "left-[820px]",
+		arrowTop: "top-[420px]",
+		arrowLeft: "left-[-130px]",
 		arrowRight: "",
 		arrowImage:
 			"https://res.cloudinary.com/da1x0nwv3/image/upload/v1725062349/arrow_fcgub4.png",
@@ -200,8 +199,8 @@ const steps = [
 		),
 		image: "https://res.cloudinary.com/da1x0nwv3/image/upload/v1725031973/step-4_aeul90.png",
 		arrowVisible: true,
-		arrowTop: "top-[4590px]",
-		arrowLeft: "left-[820px]",
+		arrowTop: "top-[230px]",
+		arrowLeft: "left-[-220px]",
 		arrowRight: "",
 		arrowImage:
 			"https://res.cloudinary.com/da1x0nwv3/image/upload/v1725062349/arrow_fcgub4.png",
@@ -263,7 +262,7 @@ export default function Home() {
 				<HorizontalSlider />
 			</div>
 
-			<div className="flex flex-col items-center justify-center gap-16">
+			<div className="flex flex-col items-center justify-center">
 				{steps.map((step) => (
 					<Tutorial
 						key={step.id}
@@ -277,8 +276,6 @@ export default function Home() {
 						arrowVisible={step.arrowVisible}
 						arrowTop={step.arrowTop}
 						arrowLeft={step.arrowLeft}
-						arrowRight={step.arrowRight}
-						arrowRotate={step.arrowRotate}
 					/>
 				))}
 			</div>
