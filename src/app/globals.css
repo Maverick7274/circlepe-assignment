@@ -11,7 +11,7 @@
 
   } */
    .h1 {
-    @apply text-[4rem] text-heading font-medium;
+    @apply md:text-[4rem] text-xl text-heading font-medium;
    }
    .last-word {
     @apply text-paragraph;
