@@ -1,19 +1,32 @@
 "use client";
 
-import Image from "next/image";
-import { ReactNode, useRef } from "react";
+import { ReactNode } from "react";
 import { cn } from "@/libs/utils";
 import { motion, easeIn } from "framer-motion";
-import { once } from "events";
 
 interface Props {
 	title: string;
 	description: ReactNode;
 	image: string;
+	id: string;
+	arrowImage?: string;
+	scaleImage?: boolean;
+	scaleImageNumber?: number;
+	arrowVisible?: boolean;
+	arrowTop?: string;
+	arrowLeft?: string;
+	arrowRight?: string;
+	arrowRotate?: string;
 }
 
 export default function Tutorial(props: Props) {
-	const ref = useRef<HTMLDivElement>(null);
+	// Removing whitespace from title
+	const titleTrim = props.title.trim().split(/\s+/);
+	const titleToID = titleTrim.join("-").toLowerCase();
+
+	// console.log(titleToID);
+
+	// Splitting title into words and getting the last word
 	const titleWords = props.title.split(" ");
 	const lastWord = titleWords.pop();
 
@@ -61,7 +74,8 @@ export default function Tutorial(props: Props) {
 			},
 		},
 	};
-	const img = {
+
+	const imgBox = {
 		hidden: {
 			opacity: 0,
 			y: 100,
@@ -77,22 +91,48 @@ export default function Tutorial(props: Props) {
 		},
 	};
 
+	const img = {
+		hidden: {
+			scale: 0,
+			y: 0,
+			easeIn,
+		},
+
+		visible: {
+			scale: props.scaleImage ? props.scaleImageNumber : 0.9,
+			y: props.scaleImage ? 300 : 100,
+			transition: {
+				delay: 1.1,
+				duration: 0.5,
+				type: "spring",
+				yoyo: Infinity,
+			},
+		},
+	};
+
 	return (
 		<div
-			ref={ref}
+			id={titleToID}
 			className={cn(
 				"min-h-screen flex justify-center bg-background",
 				"overflow-clip"
 			)}
 		>
-			{/* <div
-				className={cn(
-					"top-[-190px] left-[-400px] w-[1103px] h-[1017px]",
-					"hidden md:flex absolute bg-[radial-gradient(35.19%_35.19%_at_50%_50%,rgba(59,149,255,0.17)_0%,rgba(28,106,197,0)_100%)] overflow-clip"
-				)}
-			></div> */}
-
 			<div className="absolute w-[513px] bg-[rgba(0,0,0,0.2)] h-full right-0 hidden md:flex z-[1]"></div>
+			{props.arrowVisible ? (
+				<motion.img
+					initial="hidden"
+					whileInView="visible"
+					variants={imgBox}
+					viewport={{ once: true }}
+					className={cn("absolute z-50 hidden md:flex", props.arrowTop, props.arrowLeft, props.arrowRight, props.arrowRotate
+					)}
+					src={props.arrowImage}
+					alt="Arrow"
+					width={400}
+					height={1079}
+				/>
+			) : null}
 			<div
 				className={cn(
 					"grid md:grid-cols-2 grid-cols-1 content-center items-center justify-between md:gap-32 gap-0 w-full mx-16 md:mx-32"
@@ -134,11 +174,14 @@ export default function Tutorial(props: Props) {
 				<motion.div
 					initial="hidden"
 					whileInView="visible"
-					variants={img}
+					variants={imgBox}
 					viewport={{ once: true }}
 					className="z-10"
 				>
-					<Image
+					<motion.img
+						initial="hidden"
+						animate="visible"
+						variants={img}
 						className="flex items-center justify-center ml-0 z-10"
 						src={props.image}
 						alt={props.title}
