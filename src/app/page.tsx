@@ -233,7 +233,13 @@ export default function Home() {
 		},
 	};
 
-	useEffect(() => {}, []);
+	useEffect(() => {
+		async () => {
+			const LocomotiveScroll = (await import("locomotive-scroll")).default;
+			const locomotiveScroll = new LocomotiveScroll();
+			locomotiveScroll.init();
+		}
+	}, []);
 
 	return (
 		<main ref={container} className="">

@@ -127,7 +127,6 @@ export default function Tutorial(props: Props) {
 						initial="hidden"
 						whileInView="visible"
 						variants={heading}
-						viewport={{ once: true }}
 						className={cn("h1")}
 					>
 						{titleWords.join(" ")}{" "}
@@ -139,7 +138,6 @@ export default function Tutorial(props: Props) {
 						initial="hidden"
 						whileInView="visible"
 						variants={leading}
-						viewport={{ once: true }}
 						className=""
 					>
 						<div className="w-20 h-[0.15rem] bg-primary"></div>
@@ -148,7 +146,6 @@ export default function Tutorial(props: Props) {
 						initial="hidden"
 						whileInView="visible"
 						variants={desc}
-						viewport={{ once: true }}
 						className="font-normal"
 					>
 						{props.description}
@@ -159,7 +156,6 @@ export default function Tutorial(props: Props) {
 					initial="hidden"
 					whileInView="visible"
 					variants={imgBox}
-					viewport={{ once: true }}
 					className="z-10"
 				>
 					<div className="relative">
@@ -168,7 +164,6 @@ export default function Tutorial(props: Props) {
 								initial="hidden"
 								whileInView="visible"
 								variants={imgBox}
-								viewport={{ once: true }}
 								className={cn(
 									"absolute z-50 hidden md:flex",
 									props.arrowTop,
