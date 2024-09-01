@@ -30,13 +30,13 @@ This is a simple project which lists all the steps on how CirclePe's App Interfa
 To run the project locally, clone the project and navigate to the project directory:
 
 ```bash
-git clone https://github.com/Maverick7274/circlepe-assignment.git
+git clone https://github.com/Maverick7274/circlepe-assignment.git . neelanjan-circlepe-assignment
 ```
 
 change directory to the project directory:
 
 ```bash
-cd circlepe-assignment
+cd neelanjan-circlepe-assignment
 ```
 
 Run a command to install the dependencies:
