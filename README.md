@@ -27,7 +27,13 @@ This is a simple project which lists all the steps on how CirclePe's App Interfa
 
 ## To run the project locally
 
-First, run a command to install the dependencies:
+To run the project locally, clone the project and navigate to the project directory:
+
+```bash
+git clone https://github.com/Maverick7274/circlepe-assignment.git
+```
+
+Run a command to install the dependencies:
 
 ```bash
 npm install
@@ -53,7 +59,15 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Preferred Package Manager
+
+I've used [`pnpm`](https://pnpm.io/) as the preferred package manager for the project as it is faster than [`npm`](https://docs.npmjs.com/cli/v10) and [`yarn`](https://classic.yarnpkg.com/en/).
+
 ## The Approach
+
+The animations and the design was made in a [Figma Project](https://www.figma.com/proto/dsAjYtJma8Nnpoxd8VuUii/Untitled?page-id=0:1&node-id=1-57&node-type=FRAME&viewport=2073,400,0.2&t=7drkJlj6sjbV83Ao-1&scaling=min-zoom&content-scaling=fixed), sent by the CirclePe team. I've tried to make the project as close to the design as possible.
+
+I choose to scroll through the different pages
 
 I've followed a simple approach where I try and make almost every component and setting reusable and scalable, which is the main point of using a Virtual DOM library like React.
 
@@ -81,7 +95,7 @@ I made different components for different types of `description` like:
 
 * `OneLine` for a single line of text,
 * `TwoLines` for two lines of text,
-* `BulletPoints` for a heading bullet points,
+* `BulletPoints` for a heading bullet points.
 
 ```TypeScript
 const steps = [
@@ -116,3 +130,43 @@ const steps = [
 I've used Cloudinary to store the images and then used the URL to display the images in the project.
 
 I've also used a dev dependency called [`svgr/webpack`](https://react-svgr.com/docs/next/) to convert the SVGs to React Components.
+
+## Styling
+
+I've used Tailwind CSS for styling the project. The major colors present in the project are in the `tailwind.config.ts` file and they reset the default colors of Tailwind CSS. Resulting in making a custom color palette for the project.
+
+## Animations
+
+All the animations are handled by [Framer Motion](https://www.framer.com/motion/). As Framer Motion can only be used in a `client` page, the `page.tsx` file is a server side rendered page and other pages like `Tutorial.tsx` and `TutorialRecycler.tsx` are client side rendered pages.
+
+As the figma design had a major animation with the Gradient present in the left side of the screen, I've managed to make the gradient animation using Framer Motion, and added a small pulsing and fade in animation.
+
+There was a progress bar which was present in the design, I've managed to animate the progress bar according to the page and the best part about it is that it is again dynamic. The progress bar in the responsive design spans the whole width of the screen giving a progress of how much content on the website is left.
+
+## Responsiveness
+
+As I've used Tailwind CSS as my styling library, the project is responsive and can be viewed on any device, I've managed to make the project responsive by using the `sm`, `md`, `lg`, `xl`, `2xl` breakpoints present in Tailwind CSS.
+
+I've manually checked the responsiveness of the project by using [ngrok](https://ngrok.com/) and checking the project on other devices.
+
+## Accessibility
+
+As the project was a simple project I've used the `alt` attribute in the `img` tag to make the images accessible.
+
+## Testing
+
+I've tested the project with the Lighthouse present in the devtools.
+
+## Performance
+
+I've used the `next/image` component to lazy load the images and also used the `loading="lazy"` attribute in the `img` tag to make the images load faster.
+
+The project got a performance score of 100 in the Lighthouse test.
+
+## Deployment
+
+I've deployed the project on Vercel. The project is live and can be viewed [here](https://circlepe-assignment-five.vercel.app/).
+
+## Conclusion
+
+This was a simple project where I've tried to make the project as close to the design as possible. I've used the latest technologies and libraries to make the project as efficient as possible.
