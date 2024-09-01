@@ -33,6 +33,12 @@ To run the project locally, clone the project and navigate to the project direct
 git clone https://github.com/Maverick7274/circlepe-assignment.git
 ```
 
+change directory to the project directory:
+
+```bash
+cd circlepe-assignment
+```
+
 Run a command to install the dependencies:
 
 ```bash
